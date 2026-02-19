@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>作品集 - mamemaru1000</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Noto Sans JP", "Yu Gothic", "Meiryo", sans-serif;
+      background: linear-gradient(180deg, #faf8f5 0%, #f5f0e8 100%);
+      min-height: 100vh;
+      color: #3d3a35;
+      line-height: 1.6;
+    }
+    a { color: #7d6b5a; text-decoration: none; }
+    a:hover { color: #5c4d3f; }
+
+    .container { max-width: 960px; margin: 0 auto; padding: 0 1.5rem 3rem; }
+
+    /* Header */
+    header {
+      padding: 1.5rem 0;
+      border-bottom: 1px solid rgba(212, 196, 168, 0.4);
+    }
+    .site-name {
+      font-size: 1.375rem;
+      font-weight: 600;
+      margin: 0 0 1rem 0;
+      color: #2c2925;
+    }
+    .site-name a { color: inherit; }
+    nav {
+      display: flex;
+      gap: 1.25rem;
+      font-size: 0.9375rem;
+    }
+    nav a { transition: color 0.2s ease; }
+    nav a[href="works.html"] { font-weight: 600; color: #5c4d3f; }
+
+    /* Page title */
+    .page-title {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: #2c2925;
+      margin: 2rem 0 1.5rem 0;
+    }
+
+    /* Works grid */
+    .works-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+      margin-top: 1rem;
+    }
+    @media (min-width: 560px) {
+      .works-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (min-width: 800px) {
+      .works-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+
+    .work-card {
+      background: rgba(255, 255, 255, 0.8);
+      border: 1px solid rgba(212, 196, 168, 0.4);
+      border-radius: 1rem;
+      overflow: hidden;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+    }
+    .work-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+      border-color: rgba(212, 196, 168, 0.6);
+    }
+
+    .work-card-image {
+      width: 100%;
+      aspect-ratio: 16 / 10;
+      background: linear-gradient(145deg, #e0ddd8 0%, #c9c4bc 100%);
+      display: block;
+    }
+
+    .work-card-body {
+      padding: 1.25rem;
+    }
+    .work-card-title {
+      font-size: 1.0625rem;
+      font-weight: 600;
+      margin: 0 0 0.5rem 0;
+      color: #2c2925;
+    }
+    .work-card-desc {
+      font-size: 0.875rem;
+      color: #5a554d;
+      margin: 0 0 1rem 0;
+      line-height: 1.5;
+    }
+    .work-card-btn {
+      display: inline-block;
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: #7d6b5a;
+      padding: 0.5rem 1rem;
+      border: 1px solid rgba(125, 107, 90, 0.4);
+      border-radius: 0.5rem;
+      background: rgba(255, 255, 255, 0.6);
+      transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+    }
+    .work-card:hover .work-card-btn {
+      background: rgba(232, 220, 200, 0.4);
+      border-color: rgba(125, 107, 90, 0.5);
+      color: #5c4d3f;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1 class="site-name"><a href="index.html">mamemaru1000</a></h1>
+      <nav aria-label="メインメニュー">
+        <a href="index.html">ホーム</a>
+        <a href="works.html">作品集</a>
+      </nav>
+    </header>
+
+    <main>
+      <h2 class="page-title" id="works-heading">作品集</h2>
+
+      <section class="works-grid" aria-labelledby="works-heading">
+        <article class="work-card">
+          <span class="work-card-image" aria-hidden="true"></span>
+          <div class="work-card-body">
+            <h3 class="work-card-title">作品タイトル</h3>
+            <p class="work-card-desc">
+              ここに作品の簡単な説明を書きます。テーマや制作のきっかけなどを1〜2文でまとめられます。
+            </p>
+            <a href="#" class="work-card-btn">詳しく見る</a>
+          </div>
+        </article>
+
+        <article class="work-card">
+          <span class="work-card-image" aria-hidden="true"></span>
+          <div class="work-card-body">
+            <h3 class="work-card-title">作品タイトル</h3>
+            <p class="work-card-desc">
+              ここに作品の簡単な説明を書きます。テーマや制作のきっかけなどを1〜2文でまとめられます。
+            </p>
+            <a href="#" class="work-card-btn">詳しく見る</a>
+          </div>
+        </article>
+
+        <article class="work-card">
+          <span class="work-card-image" aria-hidden="true"></span>
+          <div class="work-card-body">
+            <h3 class="work-card-title">作品タイトル</h3>
+            <p class="work-card-desc">
+              ここに作品の簡単な説明を書きます。テーマや制作のきっかけなどを1〜2文でまとめられます。
+            </p>
+            <a href="#" class="work-card-btn">詳しく見る</a>
+          </div>
+        </article>
+      </section>
+    </main>
+  </div>
+</body>
+</html>
