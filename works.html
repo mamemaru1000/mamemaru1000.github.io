@@ -3,167 +3,228 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>作品集 - まめ丸</title>
+  <meta name="description" content="まめ丸の作品集 — AIツールを活用した映像・コンテンツ制作。">
+  <meta property="og:title" content="作品集 — まめ丸">
+  <meta property="og:description" content="まめ丸が制作した作品一覧。AIツールを活用した映像・コンテンツ制作。">
+  <meta property="og:url" content="https://mamemaru1000.github.io/works.html">
+  <meta property="og:type" content="website">
+  <title>作品集 — まめ丸</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
-    *, *::before, *::after { box-sizing: border-box; }
-    body {
-      margin: 0;
-      padding: 0;
-      font-family: "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Noto Sans JP", "Yu Gothic", "Meiryo", sans-serif;
-      background: linear-gradient(180deg, #faf8f5 0%, #f5f0e8 100%);
-      min-height: 100vh;
-      color: #3d3a35;
-      line-height: 1.6;
+    :root {
+      --bg:        #faf8f4;
+      --bg2:       #f2ede4;
+      --text:      #2e2b27;
+      --text2:     #5a5249;
+      --text3:     #8a7e72;
+      --primary:   #7d6b5a;
+      --primary-h: #5c4d3f;
+      --accent:    #b89a6a;
+      --border:    rgba(190,172,148,0.35);
+      --border-h:  rgba(190,172,148,0.65);
+      --card:      rgba(255,255,255,0.82);
+      --shadow-sm: 0 2px 8px rgba(0,0,0,0.04);
+      --shadow-md: 0 8px 28px rgba(0,0,0,0.08);
+      --radius-sm: 0.75rem;
+      --radius-md: 1.25rem;
+      --font: "Noto Sans JP","Hiragino Sans","Yu Gothic",sans-serif;
     }
-    a { color: #7d6b5a; text-decoration: none; }
-    a:hover { color: #5c4d3f; }
+    *,*::before,*::after{box-sizing:border-box}
+    body{
+      margin:0;padding:0;
+      font-family:var(--font);
+      background-color:var(--bg);
+      background-image:
+        radial-gradient(ellipse 80% 50% at 20% -10%,rgba(185,160,120,.12) 0%,transparent 60%),
+        radial-gradient(ellipse 60% 40% at 80% 110%,rgba(140,110,80,.08) 0%,transparent 60%);
+      min-height:100vh;color:var(--text);line-height:1.7;
+    }
+    a{color:var(--primary);text-decoration:none;transition:color .2s}
+    a:hover{color:var(--primary-h)}
 
-    .container { max-width: 960px; margin: 0 auto; padding: 0 1.5rem 3rem; }
+    .container{max-width:1040px;margin:0 auto;padding:0 1.5rem 5rem}
 
     /* Header */
-    header {
-      padding: 1.5rem 0;
-      border-bottom: 1px solid rgba(212, 196, 168, 0.4);
+    header{
+      display:flex;align-items:center;justify-content:space-between;
+      padding:1.75rem 0 1.5rem;border-bottom:1px solid var(--border);
     }
-    .site-name {
-      font-size: 1.375rem;
-      font-weight: 600;
-      margin: 0 0 1rem 0;
-      color: #2c2925;
-    }
-    .site-name a { color: inherit; }
-    nav {
-      display: flex;
-      gap: 1.25rem;
-      font-size: 0.9375rem;
-    }
-    nav a { transition: color 0.2s ease; }
-    nav a[href="works.html"] { font-weight: 600; color: #5c4d3f; }
+    .site-name{font-size:1.125rem;font-weight:700;letter-spacing:.04em;margin:0;color:var(--text)}
+    .site-name a{color:inherit}
+    nav{display:flex;gap:1.5rem;font-size:.9rem;font-weight:500}
+    nav a{color:var(--text3);padding-bottom:2px;border-bottom:1.5px solid transparent;transition:color .2s,border-color .2s}
+    nav a:hover,nav a.active{color:var(--text);border-bottom-color:var(--accent)}
 
-    /* Page title */
-    .page-title {
-      font-size: 1.5rem;
-      font-weight: 600;
-      color: #2c2925;
-      margin: 2rem 0 1.5rem 0;
-    }
+    /* Page Hero */
+    .page-hero{margin-top:3.5rem;margin-bottom:3rem}
+    .page-eyebrow{font-size:.8125rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin:0 0 .6rem}
+    .page-title{font-size:clamp(1.875rem,5vw,2.75rem);font-weight:700;letter-spacing:-.01em;line-height:1.2;margin:0 0 .9rem;color:var(--text)}
+    .page-desc{font-size:1rem;color:var(--text2);margin:0;max-width:480px}
 
-    /* Works grid */
-    .works-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 1.5rem;
-      margin-top: 1rem;
-    }
-    @media (min-width: 560px) {
-      .works-grid { grid-template-columns: repeat(2, 1fr); }
-    }
-    @media (min-width: 800px) {
-      .works-grid { grid-template-columns: repeat(3, 1fr); }
-    }
+    /* Works Grid */
+    .works-grid{display:grid;grid-template-columns:1fr;gap:1.75rem}
+    @media(min-width:560px){.works-grid{grid-template-columns:repeat(2,1fr)}}
+    @media(min-width:820px){.works-grid{grid-template-columns:repeat(3,1fr)}}
 
-    .work-card {
-      background: rgba(255, 255, 255, 0.8);
-      border: 1px solid rgba(212, 196, 168, 0.4);
-      border-radius: 1rem;
-      overflow: hidden;
-      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+    /* Work Card */
+    .work-card{
+      display:flex;flex-direction:column;background:var(--card);
+      border:1px solid var(--border);border-radius:var(--radius-md);overflow:hidden;
+      text-decoration:none;color:inherit;box-shadow:var(--shadow-sm);
+      transition:transform .25s,box-shadow .25s,border-color .25s;
     }
-    .work-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
-      border-color: rgba(212, 196, 168, 0.6);
-    }
+    .work-card:hover{transform:translateY(-5px);box-shadow:var(--shadow-md);border-color:var(--border-h);color:inherit}
 
-    .work-card-image {
-      width: 100%;
-      aspect-ratio: 16 / 10;
-      object-fit: cover;
-      display: block;
-      vertical-align: top;
+    /* Video thumbnail */
+    .work-video-wrap{
+      width:100%;aspect-ratio:16/10;
+      background:#1a100a;overflow:hidden;
+      position:relative;flex-shrink:0;
     }
+    .work-video-wrap video{width:100%;height:100%;object-fit:cover;display:block}
 
-    .work-card-body {
-      padding: 1.25rem;
+    /* Placeholder thumbnail */
+    .work-thumb--placeholder{
+      width:100%;aspect-ratio:16/10;
+      background:linear-gradient(135deg,#e2d8cc 0%,#cdc0b0 100%);
+      display:flex;align-items:center;justify-content:center;
+      position:relative;flex-shrink:0;
     }
-    .work-card-title {
-      font-size: 1.0625rem;
-      font-weight: 600;
-      margin: 0 0 0.5rem 0;
-      color: #2c2925;
+    .work-thumb--placeholder::before{
+      content:"";position:absolute;inset:0;
+      background:radial-gradient(ellipse 60% 60% at 40% 40%,rgba(255,255,255,.3) 0%,transparent 60%);
     }
-    .work-card-desc {
-      font-size: 0.875rem;
-      color: #5a554d;
-      margin: 0 0 1rem 0;
-      line-height: 1.5;
+    .placeholder-icon{position:relative;color:rgba(120,100,80,.45)}
+    .placeholder-icon svg{width:36px;height:36px}
+
+    /* Card body */
+    .work-body{padding:1.25rem 1.375rem 1.375rem;flex:1;display:flex;flex-direction:column}
+    .work-meta{display:flex;align-items:center;gap:.5rem;margin-bottom:.6rem}
+    .work-tag{
+      display:inline-block;font-size:.7rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
+      color:var(--accent);background:rgba(184,154,106,.12);border:1px solid rgba(184,154,106,.25);
+      padding:.15rem .55rem;border-radius:100px;
     }
-    .work-card-btn {
-      display: inline-block;
-      font-size: 0.875rem;
-      font-weight: 600;
-      color: #7d6b5a;
-      padding: 0.5rem 1rem;
-      border: 1px solid rgba(125, 107, 90, 0.4);
-      border-radius: 0.5rem;
-      background: rgba(255, 255, 255, 0.6);
-      transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+    .work-year{font-size:.75rem;color:var(--text3)}
+    .work-title{font-size:1rem;font-weight:700;color:var(--text);margin:0 0 .45rem;line-height:1.4}
+    .work-desc{font-size:.875rem;color:var(--text2);margin:0 0 1.25rem;line-height:1.55;flex:1}
+    .work-btn{
+      display:inline-flex;align-items:center;gap:.35em;align-self:flex-start;
+      font-size:.8125rem;font-weight:600;color:var(--primary);
+      padding:.45rem 1rem;border:1px solid var(--border);border-radius:100px;
+      background:rgba(255,255,255,.5);
+      transition:background .2s,border-color .2s,color .2s,transform .2s;
     }
-    .work-card:hover .work-card-btn {
-      background: rgba(232, 220, 200, 0.4);
-      border-color: rgba(125, 107, 90, 0.5);
-      color: #5c4d3f;
+    .work-card:hover .work-btn{background:var(--bg2);border-color:var(--border-h);color:var(--primary-h);transform:translateX(2px)}
+    .work-btn svg{width:13px;height:13px}
+
+    /* Placeholder card */
+    .work-card--placeholder{opacity:.5;pointer-events:none}
+    .work-card--placeholder .work-title{color:var(--text3)}
+
+    /* Footer */
+    footer{
+      margin-top:5rem;border-top:1px solid var(--border);padding-top:2rem;
+      display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.5rem;
     }
+    .footer-copy{font-size:.8125rem;color:var(--text3);margin:0}
+    .footer-link{font-size:.8125rem;color:var(--text3)}
+    .footer-link:hover{color:var(--primary)}
+
+    /* a11y */
+    .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
   </style>
 </head>
 <body>
   <div class="container">
+
     <header>
       <h1 class="site-name"><a href="index.html">まめ丸</a></h1>
       <nav aria-label="メインメニュー">
         <a href="index.html">ホーム</a>
-        <a href="works.html">作品集</a>
+        <a href="works.html" class="active">作品集</a>
       </nav>
     </header>
 
     <main>
-      <h2 class="page-title" id="works-heading">作品集</h2>
 
-      <section class="works-grid" aria-labelledby="works-heading">
-        <article class="work-card">
-          <img src="coming-soon.png" alt="Coming soon" class="work-card-image">
-          <div class="work-card-body">
-            <h3 class="work-card-title">作品タイトル</h3>
-            <p class="work-card-desc">
-              ここに作品の簡単な説明を書きます。テーマや制作のきっかけなどを1〜2文でまとめられます。
-            </p>
-            <a href="#" class="work-card-btn">詳しく見る</a>
-          </div>
-        </article>
+      <div class="page-hero">
+        <p class="page-eyebrow">Portfolio</p>
+        <h2 class="page-title">作品集</h2>
+        <p class="page-desc">AIツールを活用した映像・コンテンツ制作の作品一覧です。</p>
+      </div>
 
-        <article class="work-card">
-          <img src="coming-soon.png" alt="Coming soon" class="work-card-image">
-          <div class="work-card-body">
-            <h3 class="work-card-title">作品タイトル</h3>
-            <p class="work-card-desc">
-              ここに作品の簡単な説明を書きます。テーマや制作のきっかけなどを1〜2文でまとめられます。
-            </p>
-            <a href="#" class="work-card-btn">詳しく見る</a>
-          </div>
-        </article>
+      <section aria-label="作品一覧">
+        <div class="works-grid">
 
-        <article class="work-card">
-          <img src="coming-soon.png" alt="Coming soon" class="work-card-image">
-          <div class="work-card-body">
-            <h3 class="work-card-title">作品タイトル</h3>
-            <p class="work-card-desc">
-              ここに作品の簡単な説明を書きます。テーマや制作のきっかけなどを1〜2文でまとめられます。
-            </p>
-            <a href="#" class="work-card-btn">詳しく見る</a>
-          </div>
-        </article>
+          <!-- Work 1: ハムスター動画 -->
+          <article class="work-card">
+            <div class="work-video-wrap">
+              <video src="hamster001.mp4" poster="hamster001-poster.png"
+                     autoplay muted loop playsinline
+                     aria-label="日本の田舎暮らしを楽しむジャンガリアンハムスター">
+              </video>
+            </div>
+            <div class="work-body">
+              <div class="work-meta">
+                <span class="work-tag">AI映像</span>
+                <span class="work-year">2025</span>
+              </div>
+              <h3 class="work-title">日本の田舎暮らしを楽しむジャンガリアンハムスター</h3>
+              <p class="work-desc">Pollo AIを使って制作したAI生成動画作品です。囲炉裏でくつろぐ小さなハムスターの情景を映像化しました。</p>
+              <a class="work-btn"
+                 href="https://pollo.ai/ja/v/cmn5eihc308et1232c34j92wc?source=share"
+                 target="_blank" rel="noopener noreferrer">
+                Pollo AIで見る
+                <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+              </a>
+            </div>
+          </article>
+
+          <!-- Placeholder 2 -->
+          <article class="work-card work-card--placeholder" aria-hidden="true">
+            <div class="work-thumb--placeholder">
+              <div class="placeholder-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/>
+                </svg>
+              </div>
+            </div>
+            <div class="work-body">
+              <div class="work-meta"><span class="work-tag">Coming soon</span></div>
+              <h3 class="work-title">近日公開</h3>
+              <p class="work-desc">準備中です。</p>
+            </div>
+          </article>
+
+          <!-- Placeholder 3 -->
+          <article class="work-card work-card--placeholder" aria-hidden="true">
+            <div class="work-thumb--placeholder">
+              <div class="placeholder-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/>
+                </svg>
+              </div>
+            </div>
+            <div class="work-body">
+              <div class="work-meta"><span class="work-tag">Coming soon</span></div>
+              <h3 class="work-title">近日公開</h3>
+              <p class="work-desc">準備中です。</p>
+            </div>
+          </article>
+
+        </div>
       </section>
+
     </main>
+
+    <footer>
+      <p class="footer-copy">&copy; 2025 まめ丸</p>
+      <a class="footer-link" href="index.html">← ホームへ戻る</a>
+    </footer>
+
   </div>
 </body>
 </html>

@@ -3,137 +3,224 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>まめ丸 - Home</title>
+  <meta name="description" content="まめ丸のポートフォリオ。日々のアイデアや作ったものを残しています。">
+  <meta property="og:title" content="まめ丸">
+  <meta property="og:description" content="日々のアイデアや作ったものを少しずつ残しています。">
+  <meta property="og:url" content="https://mamemaru1000.github.io/">
+  <meta property="og:type" content="website">
+  <title>まめ丸</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
-    *, *::before, *::after { box-sizing: border-box; }
-    body {
-      margin: 0;
-      padding: 0;
-      font-family: "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Noto Sans JP", "Yu Gothic", "Meiryo", sans-serif;
-      background: linear-gradient(180deg, #faf8f5 0%, #f5f0e8 100%);
-      min-height: 100vh;
-      color: #3d3a35;
-      line-height: 1.6;
+    :root {
+      --bg:        #faf8f4;
+      --bg2:       #f2ede4;
+      --text:      #2e2b27;
+      --text2:     #5a5249;
+      --text3:     #8a7e72;
+      --primary:   #7d6b5a;
+      --primary-h: #5c4d3f;
+      --accent:    #b89a6a;
+      --border:    rgba(190,172,148,0.35);
+      --border-h:  rgba(190,172,148,0.65);
+      --card:      rgba(255,255,255,0.82);
+      --shadow-sm: 0 2px 8px rgba(0,0,0,0.04);
+      --shadow-md: 0 6px 24px rgba(0,0,0,0.07);
+      --radius-sm: 0.75rem;
+      --radius-md: 1.25rem;
+      --font: "Noto Sans JP","Hiragino Sans","Yu Gothic",sans-serif;
     }
-    a { color: #7d6b5a; text-decoration: none; }
-    a:hover { color: #5c4d3f; }
+    *,*::before,*::after{box-sizing:border-box}
+    body{
+      margin:0;padding:0;
+      font-family:var(--font);
+      background-color:var(--bg);
+      background-image:
+        radial-gradient(ellipse 80% 50% at 20% -10%,rgba(185,160,120,.12) 0%,transparent 60%),
+        radial-gradient(ellipse 60% 40% at 80% 110%,rgba(140,110,80,.08) 0%,transparent 60%);
+      min-height:100vh;color:var(--text);line-height:1.7;
+    }
+    a{color:var(--primary);text-decoration:none;transition:color .2s}
+    a:hover{color:var(--primary-h)}
+    img{display:block;max-width:100%}
 
-    .container { max-width: 640px; margin: 0 auto; padding: 0 1.5rem 3rem; }
+    .container{max-width:680px;margin:0 auto;padding:0 1.5rem 5rem}
 
     /* Header */
-    header {
-      padding: 1.5rem 0;
-      border-bottom: 1px solid rgba(212, 196, 168, 0.4);
+    header{
+      display:flex;align-items:center;justify-content:space-between;
+      padding:1.75rem 0 1.5rem;border-bottom:1px solid var(--border);
     }
-    .site-name {
-      font-size: 1.375rem;
-      font-weight: 600;
-      margin: 0 0 1rem 0;
-      color: #2c2925;
-    }
-    .site-name a { color: inherit; }
-    nav {
-      display: flex;
-      gap: 1.25rem;
-      font-size: 0.9375rem;
-    }
-    nav a {
-      transition: color 0.2s ease;
-    }
-    nav a[href="index.html"] { font-weight: 600; color: #5c4d3f; }
+    .site-name{font-size:1.125rem;font-weight:700;letter-spacing:.04em;margin:0;color:var(--text)}
+    .site-name a{color:inherit}
+    nav{display:flex;gap:1.5rem;font-size:.9rem;font-weight:500}
+    nav a{color:var(--text3);padding-bottom:2px;border-bottom:1.5px solid transparent;transition:color .2s,border-color .2s}
+    nav a:hover,nav a.active{color:var(--text);border-bottom-color:var(--accent)}
 
-    /* Profile */
-    .profile {
-      margin-top: 2.5rem;
-      background: rgba(255, 255, 255, 0.7);
-      border-radius: 1rem;
-      padding: 2rem;
-      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
-      display: grid;
-      gap: 1.5rem;
-      align-items: center;
-      justify-items: center;
+    /* Hero */
+    .hero{margin-top:4rem;margin-bottom:3.5rem}
+    .hero-eyebrow{font-size:.8125rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin:0 0 .75rem}
+    .hero-name{
+      font-size:clamp(2.5rem,7vw,3.75rem);font-weight:700;letter-spacing:-.01em;
+      line-height:1.15;margin:0 0 1.25rem;color:var(--text);
     }
-    @media (min-width: 480px) {
-      .profile {
-        grid-template-columns: auto 1fr;
-        justify-items: start;
-        text-align: left;
-      }
+    .hero-name span{
+      background:linear-gradient(135deg,var(--text) 30%,var(--accent));
+      -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
     }
-    .avatar {
-      width: 80px;
-      height: 80px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, #e8dcc8 0%, #d4c4a8 100%);
-      color: #6b5b4a;
-      font-size: 1.75rem;
-      font-weight: 600;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
+    .hero-bio{font-size:1.0625rem;color:var(--text2);max-width:460px;margin:0 0 2rem}
+    .hero-cta{
+      display:inline-flex;align-items:center;gap:.4em;
+      padding:.65rem 1.5rem;background:var(--text);color:#fff;
+      font-size:.9375rem;font-weight:600;border-radius:100px;
+      transition:background .2s,transform .2s;
     }
-    .profile-text h2 {
-      font-size: 1.125rem;
-      font-weight: 600;
-      margin: 0 0 0.5rem 0;
-      color: #2c2925;
-    }
-    .profile-text p { margin: 0; font-size: 0.9375rem; color: #5a554d; }
+    .hero-cta:hover{background:var(--primary-h);color:#fff;transform:translateY(-1px)}
+    .hero-cta svg{width:1em;height:1em}
 
-    /* Note link */
-    .links { margin-top: 2rem; }
-    .links h2 { font-size: 1rem; font-weight: 600; color: #4a4540; margin: 0 0 0.75rem 0; }
-    .link-card {
-      display: block;
-      background: rgba(255, 255, 255, 0.8);
-      border: 1px solid rgba(212, 196, 168, 0.4);
-      border-radius: 0.75rem;
-      padding: 1.25rem 1.5rem;
-      text-decoration: none;
-      color: inherit;
-      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+    /* Section header */
+    .section-header{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:1.25rem}
+    .section-title{font-size:.8125rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--text3);margin:0}
+    .section-more{font-size:.875rem;font-weight:500;color:var(--primary)}
+    .section-more:hover{color:var(--primary-h)}
+
+    /* Featured Work */
+    .featured-block{margin-bottom:3.5rem}
+
+    .work-card{
+      display:block;background:var(--card);border:1px solid var(--border);
+      border-radius:var(--radius-md);overflow:hidden;text-decoration:none;
+      color:inherit;box-shadow:var(--shadow-sm);
+      transition:transform .25s,box-shadow .25s,border-color .25s;
     }
-    .link-card:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
-      border-color: rgba(212, 196, 168, 0.7);
+    .work-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-md);border-color:var(--border-h);color:inherit}
+
+    .work-video-wrap{width:100%;aspect-ratio:16/9;background:#1a100a;overflow:hidden;position:relative}
+    .work-video-wrap video{width:100%;height:100%;object-fit:cover;display:block}
+
+    .work-body{
+      padding:1.375rem 1.5rem 1.5rem;
+      display:flex;align-items:flex-start;justify-content:space-between;gap:1rem;
     }
-    .link-card .label { font-weight: 600; font-size: 1.0625rem; color: #2c2925; }
-    .link-card .desc { font-size: 0.875rem; color: #6b6359; margin-top: 0.25rem; }
+    .work-title{font-size:1.0625rem;font-weight:700;margin:0 0 .35rem;color:var(--text)}
+    .work-desc{font-size:.875rem;color:var(--text2);margin:0;line-height:1.55}
+    .work-arrow{
+      flex-shrink:0;width:36px;height:36px;border-radius:50%;
+      border:1px solid var(--border);display:flex;align-items:center;justify-content:center;
+      color:var(--primary);transition:background .2s,border-color .2s,transform .2s;
+    }
+    .work-card:hover .work-arrow{background:var(--bg2);border-color:var(--border-h);transform:translateX(2px)}
+    .work-arrow svg{width:16px;height:16px}
+
+    /* Links */
+    .links-block{margin-bottom:3.5rem}
+    .link-list{display:flex;flex-direction:column;gap:.75rem}
+    .link-card{
+      display:flex;align-items:center;gap:1rem;padding:1.125rem 1.25rem;
+      background:var(--card);border:1px solid var(--border);border-radius:var(--radius-sm);
+      text-decoration:none;color:inherit;box-shadow:var(--shadow-sm);
+      transition:transform .2s,box-shadow .2s,border-color .2s;
+    }
+    .link-card:hover{transform:translateY(-2px);box-shadow:var(--shadow-md);border-color:var(--border-h);color:inherit}
+    .link-icon{
+      width:40px;height:40px;border-radius:.625rem;background:var(--bg2);border:1px solid var(--border);
+      display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:1.125rem;line-height:1;
+    }
+    .link-info{flex:1}
+    .link-name{font-size:.9375rem;font-weight:600;color:var(--text);margin:0 0 .15rem}
+    .link-sub{font-size:.8125rem;color:var(--text3);margin:0}
+    .link-caret{color:var(--text3);opacity:.6}
+    .link-caret svg{width:16px;height:16px;display:block}
+
+    /* Footer */
+    footer{
+      border-top:1px solid var(--border);padding-top:2rem;
+      display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.5rem;
+    }
+    .footer-copy{font-size:.8125rem;color:var(--text3);margin:0}
+    .footer-link{font-size:.8125rem;color:var(--text3)}
+    .footer-link:hover{color:var(--primary)}
   </style>
 </head>
 <body>
   <div class="container">
+
     <header>
       <h1 class="site-name"><a href="index.html">まめ丸</a></h1>
       <nav aria-label="メインメニュー">
-        <a href="index.html">ホーム</a>
+        <a href="index.html" class="active">ホーム</a>
         <a href="works.html">作品集</a>
       </nav>
     </header>
 
     <main>
-      <section class="profile" aria-labelledby="profile-heading">
-        <div class="avatar" aria-hidden="true">ま</div>
-        <div class="profile-text">
-          <h2 id="profile-heading">まめ丸</h2>
-          <p>
-            こんにちは、まめ丸です。日々のアイデアや作ったものを少しずつ残しています。
-            このサイトではプロフィールと作品へのリンクをまとめています。よかったらのぞいてみてください。
-          </p>
-        </div>
-      </section>
 
-      <section class="links" aria-labelledby="links-heading">
-        <h2 id="links-heading">Links</h2>
-        <a class="link-card" href="https://note.com/mamemaru1000" target="_blank" rel="noopener noreferrer">
-          <span class="label">note</span>
-          <span class="desc">記事を読む →</span>
+      <section class="hero" aria-labelledby="hero-heading">
+        <p class="hero-eyebrow">Portfolio</p>
+        <h2 class="hero-name" id="hero-heading"><span>まめ丸</span></h2>
+        <p class="hero-bio">
+          こんにちは、まめ丸です。日々のアイデアや作ったものを少しずつ残しています。
+          AIツールを活用した動画・コンテンツ制作が得意分野です。
+        </p>
+        <a class="hero-cta" href="works.html">
+          作品を見る
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
         </a>
       </section>
+
+      <section class="featured-block" aria-labelledby="featured-heading">
+        <div class="section-header">
+          <h3 class="section-title" id="featured-heading">Featured Work</h3>
+          <a class="section-more" href="works.html">すべて見る →</a>
+        </div>
+
+        <a class="work-card" href="works.html" aria-label="作品集を見る">
+          <div class="work-video-wrap">
+            <video src="hamster001.mp4" poster="hamster001-poster.png"
+                   autoplay muted loop playsinline
+                   aria-label="日本の田舎暮らしを楽しむジャンガリアンハムスター">
+            </video>
+          </div>
+          <div class="work-body">
+            <div>
+              <h4 class="work-title">日本の田舎暮らしを楽しむジャンガリアンハムスター</h4>
+              <p class="work-desc">Pollo AIを使って制作したAI生成動画作品です。</p>
+            </div>
+            <span class="work-arrow" aria-hidden="true">
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+            </span>
+          </div>
+        </a>
+      </section>
+
+      <section class="links-block" aria-labelledby="links-heading">
+        <div class="section-header">
+          <h3 class="section-title" id="links-heading">Links</h3>
+        </div>
+        <ul class="link-list" role="list">
+          <li>
+            <a class="link-card" href="https://note.com/mamemaru1000" target="_blank" rel="noopener noreferrer">
+              <span class="link-icon" aria-hidden="true">✍️</span>
+              <div class="link-info">
+                <p class="link-name">note</p>
+                <p class="link-sub">記事・エッセイを読む</p>
+              </div>
+              <span class="link-caret" aria-hidden="true">
+                <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 4l4 4-4 4"/></svg>
+              </span>
+            </a>
+          </li>
+        </ul>
+      </section>
+
     </main>
+
+    <footer>
+      <p class="footer-copy">&copy; 2025 まめ丸</p>
+      <a class="footer-link" href="works.html">作品集</a>
+    </footer>
+
   </div>
 </body>
 </html>
